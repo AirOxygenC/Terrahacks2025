@@ -9,7 +9,7 @@
 body, html {
   font-family: sans-serif;
   overflow-x: hidden;
-
+  background-color:#eafaff;
 }
 
 
@@ -27,15 +27,16 @@ body, html {
 .form-right {
   position: absolute;
   flex: none;          /* stop flex resizing */
-  width: 600px;        /* now actually respected */
+  width: 650px;        /* now actually respected */
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  box-shadow: 4px 20px 20px 10px rgba(0,0,0,.1);
+  box-shadow: 0px 10px 15px 0px rgba(42, 195, 255, 0.4);
+  background-color:#9DD9F3;
   border-radius: 5px;
   margin-left: 50%;
-  height:500px;
-  margin-top: -23%;
+  height:580px;
+  margin-top: -26%;
   animation: appear 0.8s ease;
 
 }
@@ -62,23 +63,30 @@ body, html {
 
 /* Button */
 .submit-button {
-  margin-top: 15%;
-  padding: 1rem 2rem;
+  margin-top: 17%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+
   font-size: 1rem;
-  background-color: #007bff;
-  color: white;
+  background-color: #ffffff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin-left: 620px;
+  margin-left: 52%;
   position: absolute;
   animation: appear 0.8s ease;
+  font-size: 40px; 
+  font-family: Marker Felt, fantasy;
+  position: absolute; 
 
 }
 
 
 .submit-button:hover {
-  background-color: #0056b3;
+  background-color: #4aa0fb;
 }
 
 .image-preview-box {
@@ -111,9 +119,9 @@ body, html {
 .sideBar {
   height: 100%;
   width: 18%; 
-  background-color: blue;
+  background-color: #9DD9F3;
   position: absolute;
-  margin-top:-24.9%;
+  margin-top:-29%;
   text-align: center;
 
 }
@@ -141,3 +149,93 @@ body, html {
   animation-range: entry 0% cover
   40%;
 }
+
+.ourMascot {
+  position: absolute; 
+  width: 300px;
+  margin-left:78%;
+  margin-top:1%;
+}
+.details {
+  font-size: 40px; 
+  font-family: Marker Felt, fantasy;
+  position: absolute; 
+  margin-left:-3%;
+  margin-top: -3.2%;
+}
+
+.detailsWriting {
+  font-size: 18px; 
+  font-family: Marker Felt, fantasy;
+  position: absolute; 
+  margin-left:-3%;
+  margin-top: 4.5%;
+
+}
+
+.checkbox-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-family: DejaVu Sans Mono, monospace;
+}
+
+.checkbox-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-family: Blippo, fantasy;
+}
+.checkbox-section {
+  margin-top: 12.5%;
+
+
+  background-color: hsla(0, 0%, 100%, 0.4); /* blue with 40% opacity */
+
+  padding: 15px;
+  padding-top: 0px;
+  border-radius:8px; 
+}
+
+.typesection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background-color: hsla(0, 0%, 100%, 0.4); /* blue with 40% opacity */
+
+  padding: 15px;
+  padding-top: 0px;
+  border-radius:8px; 
+
+  margin-top: 3%;
+
+}
+.dropdown {
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+  font-family: DejaVu Sans Mono, monospace;
+  margin-top:3%;
+}
+
+.textarea-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background-color: hsla(0, 0%, 100%, 0.4); /* blue with 40% opacity */
+  padding: 15px;
+  padding-top: 6px;
+  border-radius:8px; 
+  margin-top: 3%;
+}
+
+.extra-notes-section {
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+  font-family: DejaVu Sans Mono, monospace;
+
+}
+
+

@@ -4,13 +4,11 @@ import Checkboxes from "./checkboxes.tsx";
 import FeedingType from "./dropbox.tsx";
 import NumberRestrictedTextarea from "./textarea.tsx"; // adjust path
 import ExtraNotes from "./notes.tsx";
-import { Link } from "react-router-dom";
-import mascot from "./img/mascot.png";
 function App() {
   const [filebase64, setFileBase64] = useState<string>("");
   const [location, setLocation] = useState<string[]>([]);
   const [feedingType, setFeedingType] = useState("");
-  //const [customFeedText, setCustomFeedText] = useState("");
+  const [customFeedText, setCustomFeedText] = useState("");
   const [stoolColor, setStoolColor] = useState("");
   const [numberText, setNumberText] = useState("");
   const [durationText, setDurationText] = useState("");
@@ -71,15 +69,7 @@ function App() {
             </div>
 
             {/* Right side: form controls */}
-
             <div className="form-right">
-              <label className="details">
-                FURTHER DETAILS <br></br>
-              </label>
-              <label className="detailsWriting">
-                Enter additional information on your baby's symptoms for better
-                assessment.
-              </label>
               <div className="checkbox-section">
                 <Checkboxes
                   label="Select Location of Issue"
@@ -98,13 +88,12 @@ function App() {
                 />
               </div>
 
-              <div className="typesection">
-                <label className="dropdown">Additional Context</label>
+              <div className="feeding-type-section">
                 <FeedingType
                   feedingType={feedingType}
                   setFeedingType={setFeedingType}
-                  //customFeedText={customFeedText}
-                  //setCustomFeedText={setCustomFeedText}
+                  customFeedText={customFeedText}
+                  setCustomFeedText={setCustomFeedText}
                   stoolColor={stoolColor}
                   setStoolColor={setStoolColor}
                 />
@@ -125,19 +114,14 @@ function App() {
                 <ExtraNotes notes={extraNotes} setNotes={setExtraNotes} />
               </div>
             </div>
-            <Link to="/new-page">
-              <button type="button" className="submit-button">
-                SUBMIT
-              </button>
-            </Link>
-
-            <div>
-              <img src={mascot} alt="My local image" className="ourMascot" />
-            </div>
+            <button type="submit" className="submit-button">
+              Submit
+            </button>
           </div>
         </form>
       </header>
     </div>
   );
 }
+
 export default App;

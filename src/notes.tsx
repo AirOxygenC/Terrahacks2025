@@ -1,4 +1,5 @@
 import React from "react";
+import "./notes.css";
 
 type ExtraNotesProps = {
   notes: string;
@@ -13,6 +14,7 @@ function ExtraNotes({ notes, setNotes }: ExtraNotesProps) {
   return (
     <div style={{ marginTop: "1em", textAlign: "center" }}>
       <label
+        id="extra-notes"
         htmlFor="extra-notes"
         style={{ display: "block", marginBottom: "0.5em" }}
       >
@@ -22,8 +24,8 @@ function ExtraNotes({ notes, setNotes }: ExtraNotesProps) {
         id="extra-notes"
         value={notes}
         onChange={handleChange}
-        rows={5}
-        cols={40}
+        rows={6}
+        cols={48}
         placeholder="Enter any additional information here"
       />
     </div>
