@@ -32,6 +32,10 @@ safety_settings = [
 # Global in-memory chat history (you could use session/user ID later)
 chat_history = []
 
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({"message": "Server is running!"})
+
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.get_json()
