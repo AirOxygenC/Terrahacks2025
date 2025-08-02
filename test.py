@@ -19,7 +19,7 @@ model = genai.GenerativeModel(
 
 # Generation settings
 generation_config = types.GenerationConfig(
-    temperature=0.7
+    temperature=0
 )
 
 safety_settings = [
