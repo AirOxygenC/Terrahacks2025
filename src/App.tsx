@@ -5,7 +5,9 @@ import FeedingType from "./dropbox.tsx";
 import NumberRestrictedTextarea from "./textarea.tsx"; // adjust path
 import ExtraNotes from "./notes.tsx";
 import { Link } from "react-router-dom";
-import mascot from "./img/mascot.png";
+import fish from "./img/fish.png";
+import feet from "./img/feet.png";
+
 function App() {
   const [filebase64, setFileBase64] = useState<string>("");
   const [location, setLocation] = useState<string[]>([]);
@@ -51,7 +53,7 @@ function App() {
           <div className="form-layout">
             {/* Left side: image uploader */}
             <div className="form-left">
-              <label className="form-label">Choose an image to upload</label>
+              <label className="form-label">Choose An Image Of Rash</label>
               <br />
 
               {/* Always show a preview box — with image or placeholder inside */}
@@ -66,12 +68,11 @@ function App() {
               </div>
               <input
                 type="file"
+                className="custom-file-input"
                 onChange={(e) => convertFile(e.target.files)}
               />
             </div>
-
             {/* Right side: form controls */}
-
             <div className="form-right">
               <label className="details">
                 FURTHER DETAILS <br></br>
@@ -120,7 +121,9 @@ function App() {
                   setThirdValue={setTemperatureText}
                 />
               </div>
-
+              <div>
+                <img src={feet} alt="My local image" className="baby" />
+              </div>
               <div className="extra-notes-section">
                 <ExtraNotes notes={extraNotes} setNotes={setExtraNotes} />
               </div>
@@ -130,10 +133,9 @@ function App() {
                 SUBMIT
               </button>
             </Link>
-
             <div>
-              <img src={mascot} alt="My local image" className="ourMascot" />
-            </div>
+              <img src={fish} alt="My local image" className="ourFish" />
+            </div>{" "}
           </div>
         </form>
       </header>

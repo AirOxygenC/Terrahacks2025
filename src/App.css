@@ -54,11 +54,24 @@ body, html {
 
 /* Labels */
 .form-label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  display: block;
-    animation: appear 0.8s ease;
+  font-size: 30px; 
+  font-family: Marker Felt, fantasy;
+  position: absolute; 
+  margin-left:4%;
+  margin-top: -1.2%;
+  animation: appear 0.8s ease;
 
+}
+
+.custom-file-input {
+  font-size: 16px;
+  padding: 12px 16px;
+  height: 50px;
+  width: 100%;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
 }
 
 /* Button */
@@ -94,8 +107,8 @@ body, html {
 }
 
 .placeholder-box {
-  width: 300px;
-  height: 200px;
+  width: 350px;
+  height: 370px;
   border: 2px dashed #aaa;
   border-radius: 8px;
   display: flex;
@@ -150,7 +163,7 @@ body, html {
   40%;
 }
 
-.ourMascot {
+.ourFish {
   position: absolute; 
   width: 300px;
   margin-left:78%;
@@ -236,6 +249,12 @@ body, html {
   display: block;
   font-family: DejaVu Sans Mono, monospace;
 
+}
+
+.baby {
+  width: 300px; 
+  margin-left: -140%;
+  margin-top: 20%;
 }
 
 
