@@ -36,6 +36,48 @@ chat_history = []
 def index():
     return jsonify({"message": "Server is running!"})
 
+
+
+
+
+@app.route('/analyze-image', methods=['POST'])
+def analyze_image():
+    if 'image' not in request.files:
+        return jsonify({"error": "No image provided"}), 400
+    image = request.files['image']
+    prompt = request.form.get('prompt', 'How is my baby?')
+
+    image_bytes = image.read()
+
+    client = genai.Client()
+    try:
+        response = client.generate_content(
+            model=model,
+            content=[
+                types.Content(
+                    role="user",
+                    parts=[
+                        types.Part(
+                            inline_data=types.Blob(mime_type=image.mimetype, data=image_bytes)
+                        ),
+                        types.Part(text=prompt)
+                    ]
+                )
+            ],
+            generation_config=generation_config,
+            safety_settings=safety_settings
+        )
+
+        reply_text = response.text
+
+        # Append to chat history
+        chat_history.append({"role": "model", "parts": [reply_text]})
+
+        return jsonify({"reply": reply_text})
+    except Exception as e:
+        return jsonify({"error": "An error occurred while processing the image."}), 500
+    
+
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.get_json()
@@ -65,4 +107,4 @@ def chat():
         return jsonify({"reply": "An error occurred while generating the response."}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port = 8000, debug=True)

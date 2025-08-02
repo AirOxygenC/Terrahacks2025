@@ -19,7 +19,7 @@ const ChatBot: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/chat', {
+      const response = await fetch('http://localhost:8000/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userInput }),
@@ -36,6 +36,50 @@ const ChatBot: React.FC = () => {
       console.error('Error communicating with backend:', error);
     } finally {
       setLoading(false);
+    }
+  };
+  
+  const handleAnalyzeImage = async () => {
+    if (!imageFile) {
+      alert("Please upload an image to analyze.");
+      return;
+    }
+  
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("image", imageFile);
+    formData.append("prompt", userInput || "How is my baby?");
+  
+    setChatHistory((prev) => [
+      ...prev,
+      { role: "user", text: `[Image Analyzed]: ${userInput || "How is my baby?"}` },
+    ]);
+  
+    try {
+      const response = await fetch("http://localhost:8000/analyze-image", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+  
+      if (data.reply) {
+        setChatHistory((prev) => [...prev, { role: "bot", text: data.reply }]);
+      } else {
+        setChatHistory((prev) => [
+          ...prev,
+          { role: "bot", text: "⚠️ Error analyzing image." },
+        ]);
+      }
+    } catch (error) {
+      console.error("Error analyzing image:", error);
+      setChatHistory((prev) => [
+        ...prev,
+        { role: "bot", text: "⚠️ Network error during image analysis." },
+      ]);
+    } finally {
+      setLoading(false);
+      setUserInput('');
+      setImageFile(null);
     }
   };
 
@@ -58,7 +102,9 @@ const ChatBot: React.FC = () => {
           <div className="text-gray-400 italic self-start">Bot is typing...</div>
         )}
       </div>
+      
 
+      
       <div className="w-full max-w-xl flex gap-2">
         <input
           className="flex-1 border p-2 rounded"
