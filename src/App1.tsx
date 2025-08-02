@@ -35,7 +35,6 @@ function App() {
     e.preventDefault();
     setIsLoading(true);
     setError("");
-
     try {
       const formData = {
         location,
