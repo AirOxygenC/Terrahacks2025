@@ -5,7 +5,8 @@ import FeedingType from "./dropbox.tsx";
 import NumberRestrictedTextarea from "./textarea.tsx";
 import ExtraNotes from "./notes.tsx";
 import { Link } from "react-router-dom";
-import mascot from "./img/mascot.png";
+import fish from "./img/fish.png";
+import feet from "./img/feet.png";
 
 const API_BASE_URL = "http://localhost:5000"; // Update this to your backend URL
 
@@ -320,7 +321,7 @@ function App() {
             </button>
 
             <div>
-              <img src={mascot} alt="My local image" className="ourMascot" />
+              <img src={fish} alt="My local image" className="ourFish" />
             </div>
           </div>
         </form>
