@@ -50,7 +50,7 @@ function NumberRestrictedTextarea({
           onChange={handleChange}
           rows={1}
           cols={4}
-          placeholder="Only numbers allowed"
+          placeholder=""
           style={{ resize: "none" }}
         />
       </div>
@@ -66,7 +66,7 @@ function NumberRestrictedTextarea({
           onChange={handleSecondChange}
           rows={1}
           cols={4}
-          placeholder="Only numbers allowed"
+          placeholder=""
           style={{ resize: "none" }}
         />
       </div>
@@ -80,7 +80,7 @@ function NumberRestrictedTextarea({
           onChange={handleThirdChange}
           rows={1}
           cols={4}
-          placeholder="Only numbers allowed"
+          placeholder=""
           style={{ resize: "none" }}
         />
       </div>

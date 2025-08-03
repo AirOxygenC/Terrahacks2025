@@ -1,22 +1,23 @@
 import "./index.css";
-import location from "./checkboxes.tsx";
 import ReactDOM from "react-dom/client";
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App1.tsx";
-import NewPage from "./new-page";
+import Welcome from "./welcome.tsx";
 
-const root = createRoot(document.getElementById("root")!);
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 
 root.render(
-  <StrictMode>
-    <BrowserRouter>
+  <React.StrictMode>
+    <Router>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/new-page" element={<NewPage />} />
+        <Route path="/" element={<Welcome />} />
+        <Route path="/assessment" element={<App />} />
       </Routes>
-    </BrowserRouter>
-  </StrictMode>
+    </Router>
+  </React.StrictMode>
 );

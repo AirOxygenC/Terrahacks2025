@@ -3,286 +3,282 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color-scheme:light;
-
+  color-scheme: light;
 }
 
 body, html {
-  font-family: sans-serif;
   overflow-x: hidden;
-  background-color: #eafaff;
-  color-scheme:light;
+  background: linear-gradient(135deg, #9dceff 0%, #2677da 100%);
+  color-scheme: light;
+  min-height: 100vh;
 }
 
-
-.form-layout {
-  display: relative;
-  gap: clamp(1rem, 2vw, 2rem);
-  padding: clamp(1rem, 2vw, 2rem);
-  margin: clamp(1rem, 2vw, 2rem) auto;
-  max-width: clamp(800px, 80vw, 1200px);
-}
-
-.form-left { 
-  position: absolute; 
-  max-width: clamp(250px, 25vw, 350px); 
-  margin-left: 20%; 
-  margin-top: -24%;   
-  animation: appear 0.8s ease;
-}
-
-.form-right {
-  position: absolute;
-  flex: none;
-  width: clamp(450px, 45vw, 650px);
-  display: flex;
-  flex-direction: column;
-  padding: clamp(1rem, 2vw, 2rem);
-  box-shadow: 0px 10px 15px 0px rgba(42, 195, 255, 0.4);
-  background-color: #9DD9F3;
-  border-radius: 5px;
-  margin-left: 50%;
-  height: clamp(400px, 40vw, 580px);
-  margin-top: -26%;
-  animation: appear 0.8s ease;
-}
-
-/* Image preview styles */
-.image-preview {
-  margin-top: 1rem;
-}
-
-.image-preview img {
-  max-width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* Labels */
-.form-label {
-  font-size: clamp(20px, 3vw, 30px); 
-  font-family: Marker Felt, fantasy;
-  position: absolute; 
-  margin-left: 4%;
-  margin-top: -1.2%;
-  animation: appear 0.8s ease;
-}
-
-.custom-file-input {
-  font-size: clamp(12px, 1.5vw, 16px);
-  padding: clamp(8px, 1vw, 12px) clamp(12px, 1.5vw, 16px);
-  height: clamp(40px, 4vw, 50px);
-  width: 100%;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  cursor: pointer;
-}
-
-/* Button */
-.submit-button {
-  margin-top: 17%;
-  padding-top: clamp(15px, 2vw, 20px);
-  padding-bottom: clamp(15px, 2vw, 20px);
-  padding-left: clamp(20px, 3vw, 30px);
-  padding-right: clamp(20px, 3vw, 30px);
-  background-color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-left: 52%;
-  position: absolute;
-  animation: appear 0.8s ease;
-  font-size: clamp(25px, 4vw, 40px); 
-  font-family: Marker Felt, fantasy;
-}
-
-.submit-button:hover {
-  background-color: #4aa0fb;
-}
-
-.image-preview-box {
-  margin-top: 1rem;
-}
-
-.placeholder-box {
-  width: clamp(250px, 25vw, 350px);
-  height: clamp(280px, 28vw, 370px);
-  border: 2px dashed #aaa;
-  border-radius: 8px;
+.App {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #888;
-  font-size: clamp(0.7rem, 1vw, 0.9rem);
-  background-color: #f9f9f9;
-  animation: appear 0.8s ease;
+  padding: 2rem;
 }
 
-/* When image is shown, it replaces the placeholder */
-.image-preview-box img {
-  display: block;
-  border-radius: 8px;
-  max-width: 100%;
-  height: auto;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+.form-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two equal-width columns */
+  grid-template-rows: auto auto; /* two rows: top row for content, bottom row for submit button */
+  gap: 4rem 4rem;
+  max-width: 1600px;
+  width: 100%;
+  align-items: start;
+  justify-content: center;
+  grid-template-areas: 
+    "upload blue-container"
+    "submit-area ."; /* <-- submit button goes under upload */
 }
 
-.sideBar {
-  height: 100%;
-  width: 18%; 
-  background-color: #9DD9F3;
-  position: absolute;
-  margin-top: -29%;
+/* Left side - Image upload */
+.form-left { 
+  grid-area: upload;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: end;
+  max-width: 850px;
+  width: 100%;
+  height: 2000px;
+}
+
+.form-label {
+  font-size: 1.8rem;
+  font-style: bold;
+  color: white;
+  margin-bottom: 1.5rem;
   text-align: center;
-
-    padding-top: 3rem; /* NEW — this will push .Title1 down */
-
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.Title1 {
-  font-family: Luminari, fantasy; 
-  font-size: 50px;
-  animation: appear 0.8s ease;
-  margin-top: 3rem; /* or try larger if needed */
+.image-preview-box {
+  width: 100%;
+  max-width: 850px;
+  height: 500px;
+  border: 3px dashed rgba(255,255,255,0.6);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
 }
 
-
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.image-preview-box:hover {
+  border-color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.2);
 }
 
-.block {
-  animation: appear 5s linear; 
-  animation-timeline: view(); 
-  animation-range: entry 0% cover 40%;
+.placeholder-box {
+  text-align: center;
+  color: rgba(255,255,255,0.8);
+  font-size: 1rem;
+  padding: 2rem;
 }
 
-.ourFish {
-  position: absolute; 
-  width: 400px;
-  margin-left: 75%;
-  margin-top: -3%;
+.image-preview-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.upload {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  width: 100%;
+  max-width: 350px;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(72, 187, 120, 0.3);
+}
+
+.upload:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(72, 99, 187, 0.4);
+}
+
+/* Right side - Blue form container */
+.form-right {
+  grid-area: blue-container;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  background: linear-gradient(135deg, #9DD9F3 0%, #7ec8e3 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(157, 206, 243, 0.4);
+  position: relative;
+  max-width: 850px;
+  width: 100%;
+  justify-self: start;
 }
 
 .details {
-  font-size: clamp(28px, 4vw, 40px); 
-  font-family: Marker Felt, fantasy;
-  position: absolute; 
-  margin-left: -3%;
-  margin-top: -3.2%;
+  font-size: 2rem;
+  font-style: bold;
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .detailsWriting {
-  font-size: clamp(14px, 2vw, 18px); 
-  font-family: Marker Felt, fantasy;
-  position: absolute; 
-  margin-left: -3%;
-  margin-top: 4.5%;
+  font-size: 1rem;
+  color: #4a5568;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Form sections styling */
+.checkbox-section,
+.typesection,
+.textarea-section {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.checkbox-section:hover,
+.typesection:hover,
+.textarea-section:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
 }
 
 .checkbox-label {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
   display: block;
-  font-family: DejaVu Sans Mono, monospace;
+  color: #2d3748;
 }
 
 .checkbox-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(0.5rem, 1vw, 0.75rem);
-  font-family: Blippo, fantasy;
-}
-
-.checkbox-section {
-  margin-top: 12.5%;
-  background-color: hsla(0, 0%, 100%, 0.4);
-  padding: clamp(10px, 1.5vw, 15px);
-  padding-top: 0px;
-  border-radius: 8px; 
-}
-
-.typesection {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(0.5rem, 1vw, 0.75rem);
-  background-color: hsla(0, 0%, 100%, 0.4);
-  padding: clamp(10px, 1.5vw, 15px);
-  padding-top: 0px;
-  border-radius: 8px; 
-  margin-top: 3%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.8rem;
 }
 
 .dropdown {
-  font-size: clamp(0.8rem, 1.2vw, 1rem);
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 600;
   display: block;
-  font-family: DejaVu Sans Mono, monospace;
-  margin-top: 3%;
-}
-
-.textarea-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(0.5rem, 1vw, 0.75rem);
-  background-color: hsla(0, 0%, 100%, 0.4);
-  padding: clamp(10px, 1.5vw, 15px);
-  padding-top: clamp(4px, 0.8vw, 6px);
-  border-radius: 8px; 
-  margin-top: 3%;
+  color: #2d3748;
+  margin-bottom: 1rem;
 }
 
 .extra-notes-section {
-  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Submit button - positioned between upload and blue container */
+.submit-button {
+  grid-area: submit-area;
+  padding: 1.5rem 2.5rem;
+  background: linear-gradient(135deg, #9DD9F3 0%, #309dd8 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-style: bold;
   font-weight: bold;
-  display: block;
-  font-family: DejaVu Sans Mono, monospace;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(8, 42, 164, 0.3);
+  min-width: 220px;
+  height: fit-content;
+  justify-self: center; /* center under upload */
+  align-self: start;
+  margin-top: -1300px;
 }
 
-.baby {
-  width: clamp(200px, 20vw, 300px); 
-  margin-left: -140%;
-  margin-top: 20%;
+.submit-button:hover:not(:disabled) {
+  box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
 }
 
-/* Tablet styles */
-@media (max-width: 1024px) {
-  .form-layout {
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-      "sidebar"
-      "left"
-      "main";
-    gap: 1rem;
-    padding: 1rem;
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Decorative fish */
+.ourFish {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 200px;
+  opacity: 0.8;
+  animation: float 4s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+/* Sidebar - repositioned and styled */
+.sideBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 200px;
+  background: linear-gradient(180deg, #9DD9F3 0%, #7ec8e3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+  z-index: 5;
+}
+
+.Title1 {
+  font-style: bold;
+  font-size: 2.5rem;
+  color: #2d3748;
+  text-align: center;
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Animation for form elements */
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .ourFish {
-    position: relative;
-    right: auto;
-    top: auto;
-    margin: 1rem auto;
-    display: block;
-  }
-  
-  .baby {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    margin: 1rem auto;
-    display: block;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+.form-left,
+.form-right {
+  animation: appear 0.8s ease;
+}
 /* Mobile styles */
 @media (max-width: 768px) {
   .form-layout {
@@ -318,7 +314,6 @@ body, html {
 @media (max-width: 480px) {
   .Title1 {
     font-size: 38px;
-    font-family: American Typewriter, serif;
     margin-top: 30%;
   }
   
@@ -440,7 +435,7 @@ body, html {
 }
 
 .chat-send-button:hover {
-  background-color: #0056b3;
+  background-color: #0e76e5;
 }
 
 .new-assessment-button:hover {
@@ -452,13 +447,13 @@ body, html {
   font-size: 20px;
   width: 100%;
   max-width: 350px;
-  background-color: hsl(201, 83%, 67%);
+  background: linear-gradient(135deg, #ffffff 0%, #cbeaff 100%);
   border: 1px solid #ccc;
   border-radius: 8px;
   cursor: pointer;
   height: 80px;
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+  color: Black;
 }
 
 .footprints {
@@ -506,6 +501,8 @@ body, html {
   z-index: 1002; /* Higher than assessment container */
   left: 2rem;
   animation: appear 0.8s ease;
+  animation: float 4s ease-in-out infinite;
+
 }
 
 .assessment-widgets {
@@ -525,18 +522,20 @@ body, html {
   min-height: 200px;
   display: flex;
   flex-direction: column;
+  color: #333;
+
 }
 
 .widget h3 {
   color: #333;
   margin-bottom: 15px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 8px;
 }
 
 .widget-content {
-  color: #666;
+  color: #333;
   font-size: 1rem;
   white-space: pre-line;  /* Preserves line breaks */
   line-height: 1.5;
@@ -625,5 +624,11 @@ filter: none !important;
 background-color: #eafaff !important;
 filter: none !important;
 }
+
 }
 
+.saved-notification {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+}

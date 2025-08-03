@@ -1,13 +1,11 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Checkboxes from "./checkboxes.tsx";
 import FeedingType from "./dropbox.tsx";
 import NumberRestrictedTextarea from "./textarea.tsx";
 import ExtraNotes from "./notes.tsx";
 import { Link } from "react-router-dom";
 import fish from "./img/fish.png";
-import footprints from "./img/footprints.png";
-import babystuff from "./img/babystuff.png";
 import fishtalk from "./img/fishtalk.png";
 
 const API_BASE_URL = "http://localhost:8000"; // Update this to your backend URL
@@ -32,6 +30,24 @@ function App() {
   >([]);
   const [currentMessage, setCurrentMessage] = useState("");
   const [error, setError] = useState("");
+  
+  // New state for saved notification
+  const [showSavedNotification, setShowSavedNotification] = useState(false);
+
+  // Effect to show notification when assessment page loads
+  useEffect(() => {
+    if (showAssessment) {
+      setShowSavedNotification(true);
+      
+      // Hide notification after 4 seconds
+      const timer = setTimeout(() => {
+        setShowSavedNotification(false);
+      }, 4000);
+
+      // Cleanup timer
+      return () => clearTimeout(timer);
+    }
+  }, [showAssessment]);
 
   async function formSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -175,6 +191,13 @@ function App() {
             <img src={fishtalk} alt="My local image" className="fishtalk" />
           </div>
           <div className="assessment-container">
+            {/* Saved to Memory Notification */}
+            {showSavedNotification && (
+              <div className="saved-notification">
+                Saved to Memory
+              </div>
+            )}
+            
             <div className="assessment-section">
               <h2>Health Assessment Results</h2>
               
@@ -271,24 +294,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="sideBar">
-          <label className="Title1">
-            ParentPal <br></br>
-          </label>
-        </div>
-
-        {error && (
-          <div className="error-message">
-            <p style={{ color: "red" }}>{error}</p>
-          </div>
-        )}
 
         <form onSubmit={formSubmit}>
           <div className="form-layout">
             {/* Left side: image uploader */}
             <div className="form-left">
-              <img src={babystuff} alt="My local image" className="babystuff" />
-
               <label className="form-label">Choose An Image Of Rash</label>
               <br />
               {/* Always show a preview box — with image or placeholder inside */}
