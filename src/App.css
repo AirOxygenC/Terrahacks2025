@@ -13,15 +13,15 @@ body, html {
 
 .form-layout {
   display: relative;
-  gap: clamp(1rem, 2vw, 2rem);
-  padding: clamp(1rem, 2vw, 2rem);
-  margin: clamp(1rem, 2vw, 2rem) auto;
-  max-width: clamp(800px, 80vw, 1200px);
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  padding: clamp(0.75rem, 1.5vw, 1.5rem);
+  margin: clamp(0.75rem, 1.5vw, 1.5rem) auto;
+  max-width: clamp(600px, 75vw, 900px);
 }
 
 .form-left { 
   position: absolute; 
-  max-width: clamp(250px, 25vw, 350px); 
+  max-width: clamp(188px, 22vw, 263px); 
   margin-left: 20%; 
   margin-top: -24%;   
   animation: appear 0.8s ease;
@@ -30,33 +30,33 @@ body, html {
 .form-right {
   position: absolute;
   flex: none;
-  width: clamp(450px, 45vw, 650px);
+  width: clamp(338px, 40vw, 488px);
   display: flex;
   flex-direction: column;
-  padding: clamp(1rem, 2vw, 2rem);
-  box-shadow: 0px 10px 15px 0px rgba(42, 195, 255, 0.4);
+  padding: clamp(0.75rem, 1.5vw, 1.5rem);
+  box-shadow: 0px 7px 11px 0px rgba(42, 195, 255, 0.4);
   background-color: #9DD9F3;
-  border-radius: 5px;
+  border-radius: 4px;
   margin-left: 50%;
-  height: clamp(400px, 40vw, 580px);
+  height: clamp(300px, 35vw, 435px);
   margin-top: -26%;
   animation: appear 0.8s ease;
 }
 
 /* Image preview styles */
 .image-preview {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
 }
 
 .image-preview img {
   max-width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
 /* Labels */
 .form-label {
-  font-size: clamp(20px, 3vw, 30px); 
+  font-size: clamp(15px, 2.5vw, 23px); 
   font-family: Marker Felt, fantasy;
   position: absolute; 
   margin-left: 4%;
@@ -65,12 +65,12 @@ body, html {
 }
 
 .custom-file-input {
-  font-size: clamp(12px, 1.5vw, 16px);
-  padding: clamp(8px, 1vw, 12px) clamp(12px, 1.5vw, 16px);
-  height: clamp(40px, 4vw, 50px);
+  font-size: clamp(9px, 1.2vw, 12px);
+  padding: clamp(6px, 0.8vw, 9px) clamp(9px, 1.2vw, 12px);
+  height: clamp(30px, 3.5vw, 38px);
   width: 100%;
   border: 2px solid #ccc;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: #f9f9f9;
   cursor: pointer;
 }
@@ -78,18 +78,18 @@ body, html {
 /* Button */
 .submit-button {
   margin-top: 17%;
-  padding-top: clamp(15px, 2vw, 20px);
-  padding-bottom: clamp(15px, 2vw, 20px);
-  padding-left: clamp(20px, 3vw, 30px);
-  padding-right: clamp(20px, 3vw, 30px);
+  padding-top: clamp(11px, 1.5vw, 15px);
+  padding-bottom: clamp(11px, 1.5vw, 15px);
+  padding-left: clamp(15px, 2.2vw, 23px);
+  padding-right: clamp(15px, 2.2vw, 23px);
   background-color: #ffffff;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
   margin-left: 52%;
   position: absolute;
   animation: appear 0.8s ease;
-  font-size: clamp(25px, 4vw, 40px); 
+  font-size: clamp(19px, 3.2vw, 30px); 
   font-family: Marker Felt, fantasy;
 }
 
@@ -98,19 +98,19 @@ body, html {
 }
 
 .image-preview-box {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
 }
 
 .placeholder-box {
-  width: clamp(250px, 25vw, 350px);
-  height: clamp(280px, 28vw, 370px);
+  width: clamp(188px, 22vw, 263px);
+  height: clamp(210px, 25vw, 278px);
   border: 2px dashed #aaa;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #888;
-  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  font-size: clamp(0.5rem, 0.8vw, 0.7rem);
   background-color: #f9f9f9;
   animation: appear 0.8s ease;
 }
@@ -118,31 +118,28 @@ body, html {
 /* When image is shown, it replaces the placeholder */
 .image-preview-box img {
   display: block;
-  border-radius: 8px;
+  border-radius: 6px;
   max-width: 100%;
   height: auto;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
 .sideBar {
   height: 100%;
-  width: 18%; 
+  width: clamp(14%, 16vw, 18%); 
   background-color: #9DD9F3;
   position: absolute;
   margin-top: -29%;
   text-align: center;
-
-    padding-top: 3rem; /* NEW — this will push .Title1 down */
-
+  padding-top: clamp(1.5rem, 2.5vw, 2.25rem);
 }
 
 .Title1 {
   font-family: Luminari, fantasy; 
-  font-size: 50px;
+  font-size: clamp(30px, 4vw, 38px);
   animation: appear 0.8s ease;
-  margin-top: 3rem; /* or try larger if needed */
+  margin-top: clamp(1.5rem, 2.5vw, 2.25rem);
 }
-
 
 @keyframes appear {
   from {
@@ -163,13 +160,13 @@ body, html {
 
 .ourFish {
   position: absolute; 
-  width: 400px;
+  width: clamp(250px, 25vw, 300px);
   margin-left: 75%;
   margin-top: -3%;
 }
 
 .details {
-  font-size: clamp(28px, 4vw, 40px); 
+  font-size: clamp(21px, 3.2vw, 30px); 
   font-family: Marker Felt, fantasy;
   position: absolute; 
   margin-left: -3%;
@@ -177,7 +174,7 @@ body, html {
 }
 
 .detailsWriting {
-  font-size: clamp(14px, 2vw, 18px); 
+  font-size: clamp(11px, 1.6vw, 14px); 
   font-family: Marker Felt, fantasy;
   position: absolute; 
   margin-left: -3%;
@@ -185,9 +182,9 @@ body, html {
 }
 
 .checkbox-label {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;
   display: block;
   font-family: DejaVu Sans Mono, monospace;
 }
@@ -195,31 +192,31 @@ body, html {
 .checkbox-options {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(0.5rem, 1vw, 0.75rem);
+  gap: clamp(0.375rem, 0.8vw, 0.56rem);
   font-family: Blippo, fantasy;
 }
 
 .checkbox-section {
   margin-top: 12.5%;
   background-color: hsla(0, 0%, 100%, 0.4);
-  padding: clamp(10px, 1.5vw, 15px);
+  padding: clamp(7px, 1.2vw, 11px);
   padding-top: 0px;
-  border-radius: 8px; 
+  border-radius: 6px; 
 }
 
 .typesection {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(0.5rem, 1vw, 0.75rem);
+  gap: clamp(0.375rem, 0.8vw, 0.56rem);
   background-color: hsla(0, 0%, 100%, 0.4);
-  padding: clamp(10px, 1.5vw, 15px);
+  padding: clamp(7px, 1.2vw, 11px);
   padding-top: 0px;
-  border-radius: 8px; 
+  border-radius: 6px; 
   margin-top: 3%;
 }
 
 .dropdown {
-  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  font-size: clamp(0.6rem, 1vw, 0.75rem);
   font-weight: bold;
   display: block;
   font-family: DejaVu Sans Mono, monospace;
@@ -229,25 +226,88 @@ body, html {
 .textarea-section {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(0.5rem, 1vw, 0.75rem);
+  gap: clamp(0.375rem, 0.8vw, 0.56rem);
   background-color: hsla(0, 0%, 100%, 0.4);
-  padding: clamp(10px, 1.5vw, 15px);
-  padding-top: clamp(4px, 0.8vw, 6px);
-  border-radius: 8px; 
+  padding: clamp(7px, 1.2vw, 11px);
+  padding-top: clamp(3px, 0.6vw, 5px);
+  border-radius: 6px; 
   margin-top: 3%;
 }
 
 .extra-notes-section {
-  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  font-size: clamp(0.6rem, 1vw, 0.75rem);
   font-weight: bold;
   display: block;
   font-family: DejaVu Sans Mono, monospace;
 }
 
 .baby {
-  width: clamp(200px, 20vw, 300px); 
+  width: clamp(150px, 18vw, 225px); 
   margin-left: -140%;
   margin-top: 20%;
+}
+
+/* Large laptop styles */
+@media (max-width: 1440px) {
+  .form-layout {
+    max-width: clamp(500px, 80vw, 800px);
+  }
+  
+  .form-right {
+    width: clamp(300px, 42vw, 450px);
+    height: clamp(280px, 38vw, 400px);
+  }
+  
+  .form-left {
+    max-width: clamp(160px, 24vw, 240px);
+  }
+  
+  .placeholder-box {
+    width: clamp(160px, 24vw, 240px);
+    height: clamp(180px, 27vw, 250px);
+  }
+  
+  .sideBar {
+    width: clamp(12%, 15vw, 16%);
+  }
+}
+
+/* Standard laptop styles */
+@media (max-width: 1200px) {
+  .form-layout {
+    max-width: clamp(450px, 85vw, 700px);
+    gap: clamp(0.5rem, 1.2vw, 1.2rem);
+    padding: clamp(0.5rem, 1.2vw, 1.2rem);
+  }
+  
+  .form-right {
+    width: clamp(280px, 45vw, 420px);
+    height: clamp(260px, 40vw, 380px);
+    padding: clamp(0.5rem, 1.2vw, 1.2rem);
+  }
+  
+  .form-left {
+    max-width: clamp(140px, 26vw, 220px);
+    margin-left: 18%;
+  }
+  
+  .placeholder-box {
+    width: clamp(140px, 26vw, 220px);
+    height: clamp(160px, 29vw, 230px);
+  }
+  
+  .sideBar {
+    width: clamp(10%, 14vw, 15%);
+  }
+  
+  .Title1 {
+    font-size: clamp(25px, 3.5vw, 32px);
+  }
+  
+  .ourFish {
+    width: clamp(200px, 22vw, 260px);
+    margin-left: 72%;
+  }
 }
 
 /* Tablet styles */
@@ -258,76 +318,160 @@ body, html {
       "sidebar"
       "left"
       "main";
-    gap: 1rem;
-    padding: 1rem;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    max-width: clamp(400px, 90vw, 600px);
+  }
+  
+  .form-right {
+    position: relative;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 1rem;
+    height: auto;
+    min-height: clamp(240px, 35vw, 320px);
+  }
+  
+  .form-left {
+    position: relative;
+    max-width: 100%;
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  
+  .placeholder-box {
+    width: 100%;
+    max-width: clamp(200px, 40vw, 300px);
+    height: clamp(150px, 25vw, 200px);
+    margin: 0 auto;
+  }
+  
+  .sideBar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    padding: clamp(0.75rem, 1.5vw, 1rem);
+  }
+  
+  .Title1 {
+    font-size: clamp(22px, 3vw, 28px);
+    margin-top: 0;
+  }
+  
+  .form-label, .details {
+    position: relative;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .detailsWriting {
+    position: relative;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+  
+  .submit-button {
+    position: relative;
+    margin-left: 0;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 200px;
+    align-self: center;
   }
   
   .ourFish {
     position: relative;
     right: auto;
     top: auto;
-    margin: 1rem auto;
+    margin: 0.75rem auto;
     display: block;
+    width: clamp(150px, 30vw, 200px);
   }
   
   .baby {
     position: relative;
     bottom: auto;
     left: auto;
-    margin: 1rem auto;
+    margin: 0.75rem auto;
     display: block;
+    width: clamp(120px, 25vw, 180px);
   }
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
   .form-layout {
-    padding: 0.5rem;
-    margin: 0.5rem auto;
+    padding: 0.375rem;
+    margin: 0.375rem auto;
+    max-width: 95vw;
   }
   
   .form-right {
-    padding: 1rem;
+    padding: 0.75rem;
     min-height: auto;
   }
   
   .sideBar {
-    padding: 1rem;
+    padding: 0.75rem;
   }
   
   .checkbox-options {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.375rem;
   }
   
   .placeholder-box {
-    height: 200px;
+    height: clamp(120px, 20vw, 150px);
   }
   
   .submit-button {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+    font-size: clamp(16px, 2.5vw, 20px);
+  }
+  
+  .Title1 {
+    font-size: clamp(18px, 2.5vw, 24px);
+  }
+  
+  .ourFish {
+    width: clamp(120px, 25vw, 160px);
+  }
+  
+  .baby {
+    width: clamp(100px, 20vw, 140px);
   }
 }
 
 /* Small mobile styles */
 @media (max-width: 480px) {
   .Title1 {
-    font-size: 38px;
+    font-size: clamp(16px, 2.2vw, 20px);
     font-family: American Typewriter, serif;
-    margin-top: 30%;
+    margin-top: 1rem;
   }
   
   .form-label {
-    font-size: 20px;
+    font-size: clamp(14px, 2vw, 16px);
   }
   
   .details {
-    font-size: 20px;
+    font-size: clamp(14px, 2vw, 16px);
   }
   
   .checkbox-label {
-    font-size: 14px;
+    font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+  }
+  
+  .detailsWriting {
+    font-size: clamp(10px, 1.5vw, 12px);
+  }
+  
+  .submit-button {
+    font-size: clamp(14px, 2vw, 18px);
+    padding: clamp(8px, 1.2vw, 12px) clamp(12px, 1.8vw, 16px);
   }
 }
 
@@ -336,8 +480,8 @@ body, html {
   z-index: 1000;
   background-color: #f0f8ff;
   min-height: 100vh;
-  padding: 2rem;
-  padding-bottom: 350px; /* Add space for fixed chat at bottom */
+  padding: clamp(1rem, 2vw, 1.5rem);
+  padding-bottom: clamp(250px, 30vw, 300px);
 }
 
 .assessment-container .sideBar {
@@ -346,42 +490,42 @@ body, html {
 
 .assessment-result {
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  width: 45%; /* Reduced width to fit better on right */
-  margin-left: 50%; /* Keep on right side */
-  margin-right: 5%; /* Add some space from edge */
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border-radius: 6px;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  box-shadow: 0 1px 7px rgba(0,0,0,0.1);
+  width: clamp(300px, 45vw, 500px);
+  margin-left: clamp(45%, 50vw, 55%);
+  margin-right: 5%;
 }
 
 .chat-container {
   background: white;
-  padding: 2rem;
-  border-radius: 8px 8px 0 0; /* Only round top corners */
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.1); /* Shadow on top */
-  position: fixed; /* Fixed position */
-  bottom: 0; /* Stick to bottom */
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 -1px 7px rgba(0,0,0,0.1);
+  position: fixed;
+  bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
   margin: 0;
-  z-index: 1001; /* Above other content */
+  z-index: 1001;
 }
 
 .chat-messages {
-  max-height: 200px; /* Reduced height for bottom positioning */
+  max-height: clamp(120px, 15vw, 150px);
   overflow-y: auto;
   border: 1px solid #ddd;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 4px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-radius: 3px;
 }
 
 .message {
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 4px;
+  margin-bottom: 0.375rem;
+  padding: 0.375rem;
+  border-radius: 3px;
 }
 
 .message.user {
@@ -395,38 +539,38 @@ body, html {
 
 .chat-input {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 0.375rem;
+  margin-bottom: 0.375rem;
 }
 
 .chat-text-input {
   flex: 1;
-  padding: 0.75rem;
+  padding: clamp(0.5rem, 1vw, 0.56rem);
   border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 3px;
+  font-size: clamp(12px, 1.5vw, 14px);
 }
 
 .chat-send-button {
-  padding: 0.75rem 1.5rem;
+  padding: clamp(0.5rem, 1vw, 0.56rem) clamp(0.75rem, 1.5vw, 1.12rem);
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: clamp(12px, 1.5vw, 14px);
 }
 
 .new-assessment-button {
-  padding: 0.75rem 1.5rem;
-  background-color: #28a745; /* Different color to distinguish */
+  padding: clamp(0.5rem, 1vw, 0.56rem) clamp(0.75rem, 1.5vw, 1.12rem);
+  background-color: #28a745;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: clamp(12px, 1.5vw, 14px);
   display: block;
-  margin: 1rem auto 0.5rem auto; /* Center it */
+  margin: 0.75rem auto 0.375rem auto;
 }
 
 .chat-send-button:hover {
@@ -438,15 +582,15 @@ body, html {
 }
 
 .upload {
-  padding: 1rem;
-  font-size: 20px;
+  padding: 0.75rem;
+  font-size: clamp(14px, 1.8vw, 16px);
   width: 100%;
-  max-width: 350px;
+  max-width: clamp(250px, 30vw, 300px);
   background-color: hsl(201, 83%, 67%);
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  height: 80px;
+  height: clamp(55px, 7vw, 65px);
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -457,12 +601,12 @@ body, html {
 
 .babystuff {
   position: absolute;
-  width: 300px;
+  width: clamp(200px, 22vw, 225px);
   margin-left: -96%;
   margin-top: 140%;
 }
 
-/* Mobile responsiveness */
+/* Mobile responsiveness for assessment and chat */
 @media (max-width: 768px) {
   .assessment-result {
     width: 90%;
@@ -471,22 +615,54 @@ body, html {
   }
   
   .chat-container {
-    padding: 1rem;
+    padding: 0.75rem;
   }
   
   .chat-messages {
-    max-height: 150px;
+    max-height: clamp(100px, 12vw, 120px);
   }
   
   .assessment-container {
-    padding-bottom: 300px;
+    padding-bottom: clamp(200px, 25vw, 240px);
+  }
+  
+  .upload {
+    max-width: 90%;
+    height: clamp(45px, 6vw, 55px);
   }
 }
+
 .fishtalk {
   position: absolute;
-  width: clamp(200px, 40vw, 300px);
-  z-index: 1002; /* Higher than assessment container */
-  left: 2rem;
+  width: clamp(150px, 32vw, 225px);
+  z-index: 1002;
+  left: clamp(1rem, 2vw, 1.5rem);
   animation: appear 0.8s ease;
+}
+
+/* Additional laptop-specific breakpoints */
+@media (max-width: 1366px) and (min-width: 1025px) {
+  .form-right {
+    width: clamp(320px, 42vw, 460px);
+    height: clamp(280px, 38vw, 400px);
+  }
+  
+  .ourFish {
+    width: clamp(220px, 24vw, 280px);
+  }
+  
+  .Title1 {
+    font-size: clamp(28px, 3.8vw, 35px);
+  }
+}
+
+@media (max-width: 1280px) and (min-width: 1025px) {
+  .form-layout {
+    max-width: clamp(480px, 82vw, 750px);
+  }
+  
+  .sideBar {
+    width: clamp(11%, 15vw, 16%);
+  }
 }
 
