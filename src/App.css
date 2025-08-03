@@ -131,13 +131,18 @@ body, html {
   position: absolute;
   margin-top: -29%;
   text-align: center;
+
+    padding-top: 3rem; /* NEW — this will push .Title1 down */
+
 }
 
-.Title1, .Title2 {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-  font-size: clamp(35px, 5vw, 50px);
+.Title1 {
+  font-family: Luminari, fantasy; 
+  font-size: 50px;
   animation: appear 0.8s ease;
+  margin-top: 3rem; /* or try larger if needed */
 }
+
 
 @keyframes appear {
   from {
@@ -158,9 +163,9 @@ body, html {
 
 .ourFish {
   position: absolute; 
-  width: clamp(200px, 20vw, 300px);
-  margin-left: 78%;
-  margin-top: 1%;
+  width: 400px;
+  margin-left: 75%;
+  margin-top: -3%;
 }
 
 .details {
@@ -307,8 +312,10 @@ body, html {
 
 /* Small mobile styles */
 @media (max-width: 480px) {
-  .Title1, .Title2 {
-    font-size: 28px;
+  .Title1 {
+    font-size: 38px;
+    font-family: American Typewriter, serif;
+    margin-top: 30%;
   }
   
   .form-label {
@@ -323,3 +330,163 @@ body, html {
     font-size: 14px;
   }
 }
+
+.assessment-container {
+  position: relative;
+  z-index: 1000;
+  background-color: #f0f8ff;
+  min-height: 100vh;
+  padding: 2rem;
+  padding-bottom: 350px; /* Add space for fixed chat at bottom */
+}
+
+.assessment-container .sideBar {
+  display: none !important;
+}
+
+.assessment-result {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 45%; /* Reduced width to fit better on right */
+  margin-left: 50%; /* Keep on right side */
+  margin-right: 5%; /* Add some space from edge */
+}
+
+.chat-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px 8px 0 0; /* Only round top corners */
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1); /* Shadow on top */
+  position: fixed; /* Fixed position */
+  bottom: 0; /* Stick to bottom */
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+  z-index: 1001; /* Above other content */
+}
+
+.chat-messages {
+  max-height: 200px; /* Reduced height for bottom positioning */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.message {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.message.user {
+  background-color: #e3f2fd;
+  text-align: right;
+}
+
+.message.bot {
+  background-color: #f5f5f5;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.chat-text-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.chat-send-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.new-assessment-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #28a745; /* Different color to distinguish */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  margin: 1rem auto 0.5rem auto; /* Center it */
+}
+
+.chat-send-button:hover {
+  background-color: #0056b3;
+}
+
+.new-assessment-button:hover {
+  background-color: #218838;
+}
+
+.upload {
+  padding: 1rem;
+  font-size: 20px;
+  width: 100%;
+  max-width: 350px;
+  background-color: hsl(201, 83%, 67%);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 80px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.footprints {
+  margin-left: 0%;
+}
+
+.babystuff {
+  position: absolute;
+  width: 300px;
+  margin-left: -96%;
+  margin-top: 140%;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .assessment-result {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+  .chat-container {
+    padding: 1rem;
+  }
+  
+  .chat-messages {
+    max-height: 150px;
+  }
+  
+  .assessment-container {
+    padding-bottom: 300px;
+  }
+}
+.fishtalk {
+  position: absolute;
+  width: clamp(200px, 40vw, 300px);
+  z-index: 1002; /* Higher than assessment container */
+  left: 2rem;
+  animation: appear 0.8s ease;
+}
+

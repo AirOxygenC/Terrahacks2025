@@ -6,9 +6,11 @@ import NumberRestrictedTextarea from "./textarea.tsx";
 import ExtraNotes from "./notes.tsx";
 import { Link } from "react-router-dom";
 import fish from "./img/fish.png";
-import feet from "./img/feet.png";
+import footprints from "./img/footprints.png";
+import babystuff from "./img/babystuff.png";
+import fishtalk from "./img/fishtalk.png";
 
-const API_BASE_URL = "http://localhost:5000"; // Update this to your backend URL
+const API_BASE_URL = "http://localhost:8000"; // Update this to your backend URL
 
 function App() {
   const [filebase64, setFileBase64] = useState<string>("");
@@ -149,13 +151,9 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
-          <div className="sideBar">
-            <label className="Title1">
-              Baby Health <br></br>
-            </label>
-            <label className="Title2">AI</label>
+          <div>
+            <img src={fishtalk} alt="My local image" className="fishtalk" />
           </div>
-
           <div className="assessment-container">
             <div className="assessment-result">
               <h2>Health Assessment Results</h2>
@@ -223,9 +221,8 @@ function App() {
       <header className="App-header">
         <div className="sideBar">
           <label className="Title1">
-            Baby Health <br></br>
+            ParentPal <br></br>
           </label>
-          <label className="Title2">AI</label>
         </div>
 
         {error && (
@@ -238,9 +235,10 @@ function App() {
           <div className="form-layout">
             {/* Left side: image uploader */}
             <div className="form-left">
-              <label className="form-label">Choose an image to upload</label>
-              <br />
+              <img src={babystuff} alt="My local image" className="babystuff" />
 
+              <label className="form-label">Choose An Image Of Rash</label>
+              <br />
               {/* Always show a preview box — with image or placeholder inside */}
               <div className="image-preview-box">
                 {!filebase64 ? (
@@ -253,6 +251,7 @@ function App() {
               </div>
               <input
                 type="file"
+                className="upload"
                 onChange={(e) => convertFile(e.target.files)}
                 accept="image/*"
               />
