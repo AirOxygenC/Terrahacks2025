@@ -51,6 +51,7 @@ function NumberRestrictedTextarea({
           rows={1}
           cols={4}
           placeholder="Only numbers allowed"
+          style={{ resize: "none" }}
         />
       </div>
 
@@ -66,6 +67,7 @@ function NumberRestrictedTextarea({
           rows={1}
           cols={4}
           placeholder="Only numbers allowed"
+          style={{ resize: "none" }}
         />
       </div>
 
@@ -79,6 +81,7 @@ function NumberRestrictedTextarea({
           rows={1}
           cols={4}
           placeholder="Only numbers allowed"
+          style={{ resize: "none" }}
         />
       </div>
     </div>

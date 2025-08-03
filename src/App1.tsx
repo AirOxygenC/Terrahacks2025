@@ -5,9 +5,12 @@ import FeedingType from "./dropbox.tsx";
 import NumberRestrictedTextarea from "./textarea.tsx";
 import ExtraNotes from "./notes.tsx";
 import { Link } from "react-router-dom";
-import mascot from "./img/mascot.png";
+import fish from "./img/fish.png";
+import footprints from "./img/footprints.png";
+import babystuff from "./img/babystuff.png";
+import fishtalk from "./img/fishtalk.png";
 
-const API_BASE_URL = 'http://localhost:5000'; // Update this to your backend URL
+const API_BASE_URL = "http://localhost:8000"; // Update this to your backend URL
 
 function App() {
   const [filebase64, setFileBase64] = useState<string>("");
@@ -18,13 +21,15 @@ function App() {
   const [durationText, setDurationText] = useState("");
   const [temperatureText, setTemperatureText] = useState("");
   const [extraNotes, setExtraNotes] = useState("");
-  
+
   // New states for backend integration
   const [isLoading, setIsLoading] = useState(false);
   const [assessment, setAssessment] = useState("");
   const [sessionId, setSessionId] = useState("");
   const [showAssessment, setShowAssessment] = useState(false);
-  const [chatMessages, setChatMessages] = useState<Array<{type: 'user' | 'bot', message: string}>>([]);
+  const [chatMessages, setChatMessages] = useState<
+    Array<{ type: "user" | "bot"; message: string }>
+  >([]);
   const [currentMessage, setCurrentMessage] = useState("");
   const [error, setError] = useState("");
 
@@ -32,7 +37,6 @@ function App() {
     e.preventDefault();
     setIsLoading(true);
     setError("");
-    
     try {
       const formData = {
         location,
@@ -42,15 +46,15 @@ function App() {
         durationText,
         temperatureText,
         extraNotes,
-        image: filebase64 // Include the base64 image
+        image: filebase64, // Include the base64 image
       };
 
       const response = await fetch(`${API_BASE_URL}/submit-assessment`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
@@ -58,18 +62,17 @@ function App() {
       }
 
       const result = await response.json();
-      
+
       if (result.success) {
         setAssessment(result.assessment);
         setSessionId(result.session_id);
         setShowAssessment(true);
       } else {
-        setError(result.error || 'Unknown error occurred');
+        setError(result.error || "Unknown error occurred");
       }
-      
     } catch (error) {
-      console.error('Error submitting assessment:', error);
-      setError('Failed to submit assessment. Please try again.');
+      console.error("Error submitting assessment:", error);
+      setError("Failed to submit assessment. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -77,23 +80,26 @@ function App() {
 
   async function sendChatMessage() {
     if (!currentMessage.trim() || !sessionId) return;
-    
+
     const userMessage = currentMessage.trim();
     setCurrentMessage("");
-    
+
     // Add user message to chat
-    setChatMessages(prev => [...prev, { type: 'user', message: userMessage }]);
-    
+    setChatMessages((prev) => [
+      ...prev,
+      { type: "user", message: userMessage },
+    ]);
+
     try {
       const response = await fetch(`${API_BASE_URL}/chat`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           session_id: sessionId,
-          message: userMessage
-        })
+          message: userMessage,
+        }),
       });
 
       if (!response.ok) {
@@ -101,16 +107,30 @@ function App() {
       }
 
       const result = await response.json();
-      
+
       if (result.success) {
-        setChatMessages(prev => [...prev, { type: 'bot', message: result.response }]);
+        setChatMessages((prev) => [
+          ...prev,
+          { type: "bot", message: result.response },
+        ]);
       } else {
-        setChatMessages(prev => [...prev, { type: 'bot', message: 'Sorry, I encountered an error. Please try again.' }]);
+        setChatMessages((prev) => [
+          ...prev,
+          {
+            type: "bot",
+            message: "Sorry, I encountered an error. Please try again.",
+          },
+        ]);
       }
-      
     } catch (error) {
-      console.error('Error sending chat message:', error);
-      setChatMessages(prev => [...prev, { type: 'bot', message: 'Sorry, I encountered an error. Please try again.' }]);
+      console.error("Error sending chat message:", error);
+      setChatMessages((prev) => [
+        ...prev,
+        {
+          type: "bot",
+          message: "Sorry, I encountered an error. Please try again.",
+        },
+      ]);
     }
   }
 
@@ -131,38 +151,36 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
-          <div className="sideBar">
-            <label className="Title1">Baby Health <br></br></label>
-            <label className="Title2">AI</label>
+          <div>
+            <img src={fishtalk} alt="My local image" className="fishtalk" />
           </div>
-          
           <div className="assessment-container">
             <div className="assessment-result">
               <h2>Health Assessment Results</h2>
               <div className="assessment-text">
-                {assessment.split('\n').map((paragraph, index) => (
+                {assessment.split("\n").map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
               </div>
             </div>
-            
+
             <div className="chat-container">
               <h3>Ask Follow-up Questions</h3>
               <div className="chat-messages">
                 {chatMessages.map((msg, index) => (
                   <div key={index} className={`message ${msg.type}`}>
-                    <strong>{msg.type === 'user' ? 'You: ' : 'AI: '}</strong>
+                    <strong>{msg.type === "user" ? "You: " : "AI: "}</strong>
                     {msg.message}
                   </div>
                 ))}
               </div>
-              
+
               <div className="chat-input">
                 <input
                   type="text"
                   value={currentMessage}
                   onChange={(e) => setCurrentMessage(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && sendChatMessage()}
+                  onKeyPress={(e) => e.key === "Enter" && sendChatMessage()}
                   placeholder="Ask a follow-up question..."
                   className="chat-text-input"
                 />
@@ -171,8 +189,8 @@ function App() {
                 </button>
               </div>
             </div>
-            
-            <button 
+
+            <button
               onClick={() => {
                 setShowAssessment(false);
                 setAssessment("");
@@ -203,24 +221,24 @@ function App() {
       <header className="App-header">
         <div className="sideBar">
           <label className="Title1">
-            Baby Health <br></br>
+            ParentPal <br></br>
           </label>
-          <label className="Title2">AI</label>
         </div>
-        
+
         {error && (
           <div className="error-message">
-            <p style={{color: 'red'}}>{error}</p>
+            <p style={{ color: "red" }}>{error}</p>
           </div>
         )}
-        
+
         <form onSubmit={formSubmit}>
           <div className="form-layout">
             {/* Left side: image uploader */}
             <div className="form-left">
-              <label className="form-label">Choose an image to upload</label>
-              <br />
+              <img src={babystuff} alt="My local image" className="babystuff" />
 
+              <label className="form-label">Choose An Image Of Rash</label>
+              <br />
               {/* Always show a preview box — with image or placeholder inside */}
               <div className="image-preview-box">
                 {!filebase64 ? (
@@ -233,6 +251,7 @@ function App() {
               </div>
               <input
                 type="file"
+                className="upload"
                 onChange={(e) => convertFile(e.target.files)}
                 accept="image/*"
               />
@@ -290,17 +309,17 @@ function App() {
                 <ExtraNotes notes={extraNotes} setNotes={setExtraNotes} />
               </div>
             </div>
-            
-            <button 
-              type="submit" 
+
+            <button
+              type="submit"
               className="submit-button"
               disabled={isLoading}
             >
-              {isLoading ? 'ANALYZING...' : 'SUBMIT'}
+              {isLoading ? "ANALYZING..." : "SUBMIT"}
             </button>
 
             <div>
-              <img src={mascot} alt="My local image" className="ourMascot" />
+              <img src={fish} alt="My local image" className="ourFish" />
             </div>
           </div>
         </form>

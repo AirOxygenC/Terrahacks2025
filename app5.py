@@ -431,4 +431,4 @@ if __name__ == '__main__':
         print("WARNING: GEMINI_API_KEY environment variable not set!")
         print("Please set it with: export GEMINI_API_KEY='your-api-key-here'")
     
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=8000)
