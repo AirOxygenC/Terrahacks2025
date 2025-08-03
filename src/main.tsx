@@ -1,4 +1,3 @@
-import "./index.css";
 import location from "./checkboxes.tsx";
 import ReactDOM from "react-dom/client";
 import React, { StrictMode } from "react";
