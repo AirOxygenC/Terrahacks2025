@@ -1,0 +1,634 @@
+/* Reset default margins and prevent scroll overflow */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color-scheme: light;
+}
+
+body, html {
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #9dceff 0%, #2677da 100%);
+  color-scheme: light;
+  min-height: 100vh;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.form-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two equal-width columns */
+  grid-template-rows: auto auto; /* two rows: top row for content, bottom row for submit button */
+  gap: 4rem 4rem;
+  max-width: 1600px;
+  width: 100%;
+  align-items: start;
+  justify-content: center;
+  grid-template-areas: 
+    "upload blue-container"
+    "submit-area ."; /* <-- submit button goes under upload */
+}
+
+/* Left side - Image upload */
+.form-left { 
+  grid-area: upload;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: end;
+  max-width: 850px;
+  width: 100%;
+  height: 2000px;
+}
+
+.form-label {
+  font-size: 1.8rem;
+  font-style: bold;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.image-preview-box {
+  width: 100%;
+  max-width: 850px;
+  height: 500px;
+  border: 3px dashed rgba(255,255,255,0.6);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.image-preview-box:hover {
+  border-color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.2);
+}
+
+.placeholder-box {
+  text-align: center;
+  color: rgba(255,255,255,0.8);
+  font-size: 1rem;
+  padding: 2rem;
+}
+
+.image-preview-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.upload {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  width: 100%;
+  max-width: 350px;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(72, 187, 120, 0.3);
+}
+
+.upload:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(72, 99, 187, 0.4);
+}
+
+/* Right side - Blue form container */
+.form-right {
+  grid-area: blue-container;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  background: linear-gradient(135deg, #9DD9F3 0%, #7ec8e3 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(157, 206, 243, 0.4);
+  position: relative;
+  max-width: 850px;
+  width: 100%;
+  justify-self: start;
+}
+
+.details {
+  font-size: 2rem;
+  font-style: bold;
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.detailsWriting {
+  font-size: 1rem;
+  color: #4a5568;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Form sections styling */
+.checkbox-section,
+.typesection,
+.textarea-section {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.checkbox-section:hover,
+.typesection:hover,
+.textarea-section:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.checkbox-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: block;
+  color: #2d3748;
+}
+
+.checkbox-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.8rem;
+}
+
+.dropdown {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: block;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.extra-notes-section {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Submit button - positioned between upload and blue container */
+.submit-button {
+  grid-area: submit-area;
+  padding: 1.5rem 2.5rem;
+  background: linear-gradient(135deg, #9DD9F3 0%, #309dd8 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-style: bold;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(8, 42, 164, 0.3);
+  min-width: 220px;
+  height: fit-content;
+  justify-self: center; /* center under upload */
+  align-self: start;
+  margin-top: -1300px;
+}
+
+.submit-button:hover:not(:disabled) {
+  box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Decorative fish */
+.ourFish {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 200px;
+  opacity: 0.8;
+  animation: float 4s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+/* Sidebar - repositioned and styled */
+.sideBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 200px;
+  background: linear-gradient(180deg, #9DD9F3 0%, #7ec8e3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+  z-index: 5;
+}
+
+.Title1 {
+  font-style: bold;
+  font-size: 2.5rem;
+  color: #2d3748;
+  text-align: center;
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Animation for form elements */
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-left,
+.form-right {
+  animation: appear 0.8s ease;
+}
+/* Mobile styles */
+@media (max-width: 768px) {
+  .form-layout {
+    padding: 0.5rem;
+    margin: 0.5rem auto;
+  }
+  
+  .form-right {
+    padding: 1rem;
+    min-height: auto;
+  }
+  
+  .sideBar {
+    padding: 1rem;
+  }
+  
+  .checkbox-options {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .placeholder-box {
+    height: 200px;
+  }
+  
+  .submit-button {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+  .Title1 {
+    font-size: 38px;
+    margin-top: 30%;
+  }
+  
+  .form-label {
+    font-size: 20px;
+  }
+  
+  .details {
+    font-size: 20px;
+  }
+  
+  .checkbox-label {
+    font-size: 14px;
+  }
+}
+
+.assessment-container {
+  position: relative;
+  z-index: 1000;
+  background-color: #f0f8ff;
+  min-height: 100vh;
+  padding: 2rem;
+  padding-bottom: 350px; /* Add space for fixed chat at bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.assessment-container .sideBar {
+  display: none !important;
+}
+
+.assessment-result {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 45%; /* Reduced width to fit better on right */
+  margin-left: 50%; /* Keep on right side */
+  margin-right: 5%; /* Add some space from edge */
+}
+
+.chat-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px 8px 0 0; /* Only round top corners */
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1); /* Shadow on top */
+  position: fixed; /* Fixed position */
+  bottom: 0; /* Stick to bottom */
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+  z-index: 1001; /* Above other content */
+}
+
+.chat-messages {
+  max-height: 200px; /* Reduced height for bottom positioning */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.message {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.message.user {
+  background-color: #e3f2fd;
+  text-align: right;
+}
+
+.message.bot {
+  background-color: #f5f5f5;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.chat-text-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.chat-send-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.new-assessment-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #5ac0eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  margin: 1rem auto;  /* Center the button */
+  width: fit-content;  /* Make button width fit content */
+  align-self: center;  /* Center within flex container */
+}
+
+.chat-send-button:hover {
+  background-color: #0e76e5;
+}
+
+.new-assessment-button:hover {
+  background-color: #3697a6;
+}
+
+.upload {
+  padding: 1rem;
+  font-size: 20px;
+  width: 100%;
+  max-width: 350px;
+  background: linear-gradient(135deg, #ffffff 0%, #cbeaff 100%);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 80px;
+  text-align: center;
+  color: Black;
+}
+
+.footprints {
+  margin-left: 0%;
+}
+
+.babystuff {
+  position: absolute;
+  width: 300px;
+  margin-left: -96%;
+  margin-top: 140%;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .assessment-result {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+  .chat-container {
+    padding: 1rem;
+  }
+  
+  .chat-messages {
+    max-height: 150px;
+  }
+  
+  .assessment-container {
+    padding-bottom: 300px;
+  }
+
+  .assessment-widgets,
+  .assessment-section h2 {
+    width: 90%;  /* Wider on mobile */
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.fishtalk {
+  position: absolute;
+  width: clamp(200px, 40vw, 300px);
+  z-index: 1002; /* Higher than assessment container */
+  left: 2rem;
+  animation: appear 0.8s ease;
+  animation: float 4s ease-in-out infinite;
+
+}
+
+.assessment-widgets {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 20px 0;
+  width: 80%;  /* Reduce width to half */
+  margin-left: auto;  /* Push to right */
+}
+
+.widget {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  color: #333;
+
+}
+
+.widget h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 8px;
+}
+
+.widget-content {
+  color: #333;
+  font-size: 1rem;
+  white-space: pre-line;  /* Preserves line breaks */
+  line-height: 1.5;
+}
+
+/* Color coding for different widgets */
+.widget.diagnosis {
+  border-left: 4px solid #4caf50;
+}
+
+.widget.conditions {
+  border-left: 4px solid #2196f3;
+}
+
+.widget.warnings {
+  border-left: 4px solid #f44336;
+}
+
+.widget.next-steps {
+  border-left: 4px solid #ff9800;
+}
+
+.severity-indicator {
+  padding: 8px 16px;
+  background: #ffd700;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.recommendations ul,
+.next-steps ul {
+  list-style: none;
+  padding: 0;
+}
+
+.recommendations li,
+.next-steps li {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.recommendations li:before,
+.next-steps li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #4a90e2;
+}
+
+.diagnosis .widget-content {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.assessment-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  padding-right: 2%;  /* Increase right padding */
+  margin-left: auto;  /* Push content to right */
+}
+
+.assessment-section h2 {
+  text-align: right;  /* right the title */
+  width: 50%;  /* Match widgets width */
+  margin-left: auto;  /* Push to right */
+  margin-right: 2%; /* Add right margin for spacing */
+  padding-right: 0;
+}
+@media (prefers-color-scheme:dark) {
+:root {
+color-scheme: light;
+}
+
+html,body {
+background-color: #eafaff !important;
+color: #000 !important; 
+filter: none !important; 
+}
+
+.App, .assessment-container, .assessment-result, .chat-container {
+background-color: #eafaff !important;
+filter: none !important;
+}
+
+}
+
+.saved-notification {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+}
