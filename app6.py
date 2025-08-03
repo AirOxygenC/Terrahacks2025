@@ -94,7 +94,7 @@ Baby Information:
         prompt += f"• Additional notes: {form_data['extraNotes']}\n"
     
     prompt += """
-Please provide ONLY these in your responce. seperate each section with a new line with a \ in the line:
+Please provide ONLY these in your responce, using ONLY dash (-) points. no need to add title for each section. seperate each section with a new line with a \ in the line:
 1. A short, bullet pointed preliminary assessment of the possible conditions with accuracy ratings [XX% match/confidence/likely]
 2. Explanations of the conditions (common, benign causes first) with confidence levels [XX%]
 3. Warning signs that would require immediate medical attention

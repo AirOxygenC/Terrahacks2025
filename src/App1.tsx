@@ -146,6 +146,26 @@ function App() {
     }
   }
 
+  // Helper function to parse the assessment
+  const parseAssessment = (assessment: string) => {
+    // Split the response into sections using '\'
+    const sections = assessment.split('\\');
+    
+    // Helper function to remove section headers and clean content
+    const cleanSection = (text: string) => {
+      return text
+        .replace(/^-\s*[^:]+:\s*\n?/m, '')  // Removes bullet point titles like "- Section Title:"
+        .trim();
+    };
+
+    return {
+      diagnosis: cleanSection(sections[0] || ''),
+      conditions: cleanSection(sections[1] || ''),
+      warnings: cleanSection(sections[2] || ''),
+      steps: cleanSection(sections[3] || '')
+    };
+  };
+
   // If assessment is shown, display the results and chat interface
   if (showAssessment) {
     return (
@@ -155,13 +175,66 @@ function App() {
             <img src={fishtalk} alt="My local image" className="fishtalk" />
           </div>
           <div className="assessment-container">
-            <div className="assessment-result">
+            <div className="assessment-section">
               <h2>Health Assessment Results</h2>
-              <div className="assessment-text">
-                {assessment.split("\n").map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
+              
+              <div className="assessment-widgets">
+                {(() => {
+                  const { diagnosis, conditions, warnings, steps } = parseAssessment(assessment);
+                  return (
+                    <>
+                      <div className="widget diagnosis">
+                        <h3>Primary Diagnosis</h3>
+                        <div className="widget-content">
+                          {diagnosis}
+                        </div>
+                      </div>
+
+                      <div className="widget conditions">
+                        <h3>Condition Details</h3>
+                        <div className="widget-content">
+                          {conditions}
+                        </div>
+                      </div>
+
+                      <div className="widget warnings">
+                        <h3>Warning Signs</h3>
+                        <div className="widget-content">
+                          {warnings}
+                        </div>
+                      </div>
+
+                      <div className="widget next-steps">
+                        <h3>Next Steps</h3>
+                        <div className="widget-content">
+                          {steps}
+                        </div>
+                      </div>
+                    </>
+                  );
+                })()}
               </div>
+
+              <button
+                onClick={() => {
+                  setShowAssessment(false);
+                  setAssessment("");
+                  setSessionId("");
+                  setChatMessages([]);
+                  // Reset form
+                  setFileBase64("");
+                  setLocation([]);
+                  setFeedingType("");
+                  setStoolColor("");
+                  setNumberText("");
+                  setDurationText("");
+                  setTemperatureText("");
+                  setExtraNotes("");
+                }}
+                className="new-assessment-button"
+              >
+                New Assessment
+              </button>
             </div>
 
             <div className="chat-container">
@@ -189,27 +262,6 @@ function App() {
                 </button>
               </div>
             </div>
-
-            <button
-              onClick={() => {
-                setShowAssessment(false);
-                setAssessment("");
-                setSessionId("");
-                setChatMessages([]);
-                // Reset form
-                setFileBase64("");
-                setLocation([]);
-                setFeedingType("");
-                setStoolColor("");
-                setNumberText("");
-                setDurationText("");
-                setTemperatureText("");
-                setExtraNotes("");
-              }}
-              className="new-assessment-button"
-            >
-              New Assessment
-            </button>
           </div>
         </header>
       </div>

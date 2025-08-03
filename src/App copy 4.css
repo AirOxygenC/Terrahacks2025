@@ -14,7 +14,6 @@ body, html {
   color-scheme:light;
 }
 
-
 .form-layout {
   display: relative;
   gap: clamp(1rem, 2vw, 2rem);
@@ -625,5 +624,5 @@ filter: none !important;
 background-color: #eafaff !important;
 filter: none !important;
 }
-}
 
+}

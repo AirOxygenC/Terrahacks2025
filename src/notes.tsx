@@ -27,6 +27,8 @@ function ExtraNotes({ notes, setNotes }: ExtraNotesProps) {
         rows={6}
         cols={48}
         placeholder="Enter any additional information here"
+        style={{ resize: "none" }}
+
       />
     </div>
   );
