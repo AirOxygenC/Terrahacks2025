@@ -14,7 +14,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for React frontend
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///baby_health.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///baby_health_data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -107,16 +107,16 @@ def process_image(base64_string):
 def create_baby_assessment_prompt(form_data, historical_context=None):
     """Create a comprehensive prompt for baby health assessment"""
 
-    prompt = """You are a pediatric health AI assistant who is trying to provide assistance
+    prompt = """You are a empathetic and pediatric health AI assistant who is trying to provide assistance
     to new parents regarding their child and its health. When speaking to the parents,
     remember to be respectful, sounding caring/genuine, and calming because they are more likely already nervous. 
     Please analyze the provided information about a baby and give a preliminary health assessment and keep responses concise/to the point
-     while adhering to the below.
+     while adhering to the below. Feel free to use positive emojis when appropriate to reassure parents. 
 
 IMPORTANT DISCLAIMERS:
 - This is NOT an official medical diagnosis
 - Always recommend consulting a pediatrician for any health concerns
-- If symptoms suggest urgent care is needed, clearly state this
+- If symptoms suggest urgent care is needed, clearly state this and in **bold** text
 
 ACCURACY RATING REQUIREMENT:
 - For each possible condition or assessment you mention, include a confidence/accuracy rating in brackets
@@ -159,12 +159,11 @@ Baby Information:
         prompt += f"\nPREVIOUS ASSESSMENTS FOR THIS BABY:\n{historical_context}\n"
     
     prompt += """
-Please provide:
-1. A preliminary assessment of the symptoms with accuracy ratings [XX% match/confidence/likely]
-2. Possible explanations (common, benign causes first) with confidence levels [XX%]
+Please provide ONLY these in your responce, using ONLY dash (-) points. no need to add title for each section. seperate each section with a new line with a \ in the line:
+1. A short, bullet pointed preliminary assessment of the possible conditions with accuracy ratings [XX% match/confidence/likely]
+2. Explanations of the conditions (common, benign causes first) with confidence levels [XX%]
 3. Warning signs that would require immediate medical attention
-4. General care recommendations
-5. When to contact a pediatrician
+4. General care recommendations/next steps for the parents.
 
 EXAMPLES of how to include accuracy ratings:
 - "This appears to be normal infant skin irritation [82% match]"
