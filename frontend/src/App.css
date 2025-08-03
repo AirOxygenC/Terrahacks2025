@@ -1,27 +1,40 @@
+/* Calculate scale factor based on your reference screen (2560x1664) */
+:root {
+  --scale-factor: min(100vw / 2560px, 100vh / 1664px);
+}
+
 #root {
-  /* Use percentage-based max-width that scales with viewport */
-  max-width: min(50vw, 1280px);
+  /* Scale the original fixed values proportionally */
+  max-width: calc(1280px * var(--scale-factor));
   margin: 0 auto;
-  /* Use viewport units for padding that scales */
-  padding: min(2rem, 3.2vw);
+  padding: calc(2rem * var(--scale-factor));
   text-align: center;
+  
+  /* Ensure the root takes full viewport to maintain proportions */
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  
+  /* Scale fonts proportionally too */
+  font-size: calc(1rem * var(--scale-factor));
 }
 
 .logo {
-  /* Use viewport height for scalable logo size */
-  height: min(6em, 9.6vh);
-  /* Scale padding proportionally */
-  padding: min(1.5em, 2.4vh);
+  /* Scale original dimensions proportionally */
+  height: calc(6em * var(--scale-factor));
+  padding: calc(1.5em * var(--scale-factor));
   will-change: filter;
   transition: filter 300ms;
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  /* Scale shadow blur proportionally */
+  filter: drop-shadow(0 0 calc(2em * var(--scale-factor)) #646cffaa);
 }
 
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  /* Scale shadow blur proportionally */
+  filter: drop-shadow(0 0 calc(2em * var(--scale-factor)) #61dafbaa);
 }
 
 @keyframes logo-spin {
@@ -40,43 +53,22 @@
 }
 
 .card {
-  /* Use viewport-based padding for responsive spacing */
-  padding: min(2em, 3.2vw);
+  /* Scale padding proportionally */
+  padding: calc(2em * var(--scale-factor));
 }
 
 .read-the-docs {
   color: #888;
 }
 
-/* Additional responsive breakpoints to fine-tune appearance */
-@media (max-width: 768px) {
-  #root {
-    max-width: 90vw;
-    padding: min(1.5rem, 4vw);
-  }
-  
-  .logo {
-    height: min(5em, 12vh);
-    padding: min(1.2em, 3vh);
-  }
-  
-  .card {
-    padding: min(1.5em, 4vw);
-  }
+/* Ensure all child elements inherit the scaled font size */
+* {
+  box-sizing: border-box;
 }
 
-@media (max-width: 480px) {
-  #root {
-    max-width: 95vw;
-    padding: min(1rem, 5vw);
-  }
-  
-  .logo {
-    height: min(4em, 10vh);
-    padding: min(1em, 2.5vh);
-  }
-  
-  .card {
-    padding: min(1.2em, 5vw);
+/* Optional: Add a minimum scale to prevent elements from becoming too small */
+@media (max-width: 640px) {
+  :root {
+    --scale-factor: max(0.25, min(100vw / 2560px, 100vh / 1664px));
   }
 }
