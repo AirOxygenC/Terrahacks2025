@@ -159,12 +159,11 @@ Baby Information:
         prompt += f"\nPREVIOUS ASSESSMENTS FOR THIS BABY:\n{historical_context}\n"
     
     prompt += """
-Please provide:
-1. A preliminary assessment of the symptoms with accuracy ratings [XX% match/confidence/likely]
-2. Possible explanations (common, benign causes first) with confidence levels [XX%]
+Please provide ONLY these in your responce, using ONLY dash (-) points. no need to add title for each section. seperate each section with a new line with a \ in the line:
+1. A short, bullet pointed preliminary assessment of the possible conditions with accuracy ratings [XX% match/confidence/likely]
+2. Explanations of the conditions (common, benign causes first) with confidence levels [XX%]
 3. Warning signs that would require immediate medical attention
-4. General care recommendations
-5. When to contact a pediatrician
+4. General care recommendations/next steps for the parents.
 
 EXAMPLES of how to include accuracy ratings:
 - "This appears to be normal infant skin irritation [82% match]"
