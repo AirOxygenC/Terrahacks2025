@@ -1,19 +1,25 @@
 #root {
-  max-width: 1280px;
+  /* Use percentage-based max-width that scales with viewport */
+  max-width: min(50vw, 1280px);
   margin: 0 auto;
-  padding: 2rem;
+  /* Use viewport units for padding that scales */
+  padding: min(2rem, 3.2vw);
   text-align: center;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  /* Use viewport height for scalable logo size */
+  height: min(6em, 9.6vh);
+  /* Scale padding proportionally */
+  padding: min(1.5em, 2.4vh);
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -34,9 +40,43 @@
 }
 
 .card {
-  padding: 2em;
+  /* Use viewport-based padding for responsive spacing */
+  padding: min(2em, 3.2vw);
 }
 
 .read-the-docs {
   color: #888;
+}
+
+/* Additional responsive breakpoints to fine-tune appearance */
+@media (max-width: 768px) {
+  #root {
+    max-width: 90vw;
+    padding: min(1.5rem, 4vw);
+  }
+  
+  .logo {
+    height: min(5em, 12vh);
+    padding: min(1.2em, 3vh);
+  }
+  
+  .card {
+    padding: min(1.5em, 4vw);
+  }
+}
+
+@media (max-width: 480px) {
+  #root {
+    max-width: 95vw;
+    padding: min(1rem, 5vw);
+  }
+  
+  .logo {
+    height: min(4em, 10vh);
+    padding: min(1em, 2.5vh);
+  }
+  
+  .card {
+    padding: min(1.2em, 5vw);
+  }
 }
